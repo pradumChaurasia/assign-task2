@@ -1,23 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Upload from './Components/Upload';
+import UploadList from './Components/UploadList';
 
 function App() {
+  const [videos,setVideos]=useState([])
+  const addVideo=(video)=>{
+    setVideos([...videos,video]);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Upload onUpload={addVideo}/>
+      <UploadList videos={videos}/>
     </div>
   );
 }
